@@ -1,25 +1,18 @@
-# Basic utilities
-requests==2.26.0
-boto3==1.24.87
-
-# Web development
-flask==2.0.1
-click==8.1.3
-
-# Data visualization
-matplotlib==3.4.3
-seaborn==0.11.2
-
-# Database
-sqlalchemy==1.4.23
-psycopg2==2.9.1
-
-# Testing
+#devops
+black==22.3.0
+click==8.1.3 
 pytest==7.1.3
 pytest-cov==4.0.0
-
-# Code formatting
-black==22.3.0
-
-# Code linting
-pylint==2.15.3
+#pylint==2.15.3
+#rust based linter
+ruff==0.0.284
+boto3==1.24.87
+#web
+fastapi==0.85.0
+uvicorn==0.18.3
+#other necessary packages 
+pandas==2.0.3       
+nbval==0.10.0   
+matplotlib==3.7.3
+tabulate==0.9.0
+jupyter == 1.0.0
