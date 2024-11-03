@@ -1,8 +1,6 @@
 """
 Main CLI or app entry point for analyzing alcohol consumption data.
 """
-
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from mylib.lib import (
@@ -18,7 +16,10 @@ from mylib.lib import (
 
 def main():
     # Load dataset
-    drink_csv = "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/master/alcohol-consumption/drinks.csv"
+    drink_csv = (
+    "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/"
+    "master/alcohol-consumption/drinks.csv"
+    )
     drink_df = load_and_preprocess(drink_csv)
     
     # Basic Data Inspection
@@ -47,8 +48,10 @@ def main():
     drink_df = classify_and_count_categories(drink_df)
     
     # Identify and print countries with zero alcohol consumption
-    zero_consumption_countries = drink_df[drink_df['total_alcohol'] == 0][['country', 'total_alcohol']]
-    print("Countries with Zero Alcohol Consumption:\n", zero_consumption_countries)
+    zero_consumption_countries = drink_df[drink_df['total_alcohol'] == 0]
+    [['country', 'total_alcohol']]
+    print("Countries with Zero Alcohol Consumption:\n", 
+          zero_consumption_countries)
     
     # Visualize Alcohol Consumption by Category
     category_counts = drink_df['consumption_category'].value_counts()
@@ -131,5 +134,8 @@ def save_to_markdown(drink_csv):
 
 if __name__ == "__main__":
     main()
-    drink_csv = "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/master/alcohol-consumption/drinks.csv"
+    drink_csv = (
+    "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/"
+    "master/alcohol-consumption/drinks.csv"
+    )
     save_to_markdown(drink_csv)

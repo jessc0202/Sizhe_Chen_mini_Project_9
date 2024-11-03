@@ -17,12 +17,10 @@ def load_and_preprocess(csv_url):
 
 # Function to calculate basic statistics
 def calculate_basic_stats(df):
-    """Calculate basic statistics for beer, spirits, wine, and total alcohol columns."""
     return df[['beer', 'spirits', 'wine', 'total_alcohol']].describe()
 
 # Function to get top N countries by total alcohol consumption
 def get_top_countries_by_alcohol(df, n=5):
-    """Return the top N countries by total alcohol consumption."""
     return df.nlargest(n, 'total_alcohol')[['country', 'total_alcohol']]
 
 # Function to compute correlation matrix
@@ -37,7 +35,7 @@ def plot_average_servings(df):
     plt.title("Average Servings of Beer, Spirits, and Wine")
     plt.xlabel("Type of Drink")
     plt.ylabel("Average Servings")
-    plt.savefig("average_servings.png", bbox_inches='tight')  # Save with tight bounding box
+    plt.savefig("average_servings.png", bbox_inches='tight')  
     plt.close()
 
 def plot_top_countries(df):
@@ -47,7 +45,7 @@ def plot_top_countries(df):
     plt.title("Top 5 Countries by Total Alcohol Consumption")
     plt.xlabel("Total Alcohol Consumption (Litres)")
     plt.ylabel("Country")
-    plt.savefig("top_countries.png", bbox_inches='tight')  # Save with tight bounding box
+    plt.savefig("top_countries.png", bbox_inches='tight')  
     plt.close()
 
 def plot_servings_distributions(df):
@@ -84,7 +82,6 @@ def plot_servings_distributions(df):
 
 # Function to classify countries based on alcohol consumption level
 def classify_and_count_categories(df):
-    """Classify countries based on total alcohol consumption and add category counts."""
     def classify_consumption(total_alcohol):
         if total_alcohol < 3:
             return "Low"
