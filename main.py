@@ -14,31 +14,32 @@ from mylib.lib import (
     classify_and_count_categories,
 )
 
+
 def main():
     # Load dataset
     drink_csv = (
-    "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/"
-    "master/alcohol-consumption/drinks.csv"
+        "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/"
+        "master/alcohol-consumption/drinks.csv"
     )
     drink_df = load_and_preprocess(drink_csv)
-    
+
     # Basic Data Inspection
     print(drink_df.info())
     print(drink_df.isnull().sum())  # Check for missing values
     print(drink_df.head())
-    
+
     # Basic Statistics
     basic_stats = calculate_basic_stats(drink_df)
     print("Basic Statistics:\n", basic_stats)
-    
+
     # Top 5 Countries by Total Alcohol Consumption
     top_5_alcohol = get_top_countries_by_alcohol(drink_df, 5)
     print("Top 5 Countries by Total Alcohol Consumption:\n", top_5_alcohol)
-    
+
     # Correlation Matrix
     correlation_matrix = compute_correlation_matrix(drink_df)
     print("Correlation Matrix:\n", correlation_matrix)
-    
+
     # Visualizations
     plot_average_servings(drink_df)
     plot_top_countries(drink_df)
@@ -46,28 +47,29 @@ def main():
 
     # Data Manipulation: Classification by Consumption Level
     drink_df = classify_and_count_categories(drink_df)
-    
+
     # Identify and print countries with zero alcohol consumption
-    zero_consumption_countries = drink_df[drink_df['total_alcohol'] == 0]
-    [['country', 'total_alcohol']]
-    print("Countries with Zero Alcohol Consumption:\n", 
-          zero_consumption_countries)
-    
+    zero_consumption_countries = drink_df[drink_df["total_alcohol"] == 0]
+    [["country", "total_alcohol"]]
+    print("Countries with Zero Alcohol Consumption:\n", zero_consumption_countries)
+
     # Visualize Alcohol Consumption by Category
-    category_counts = drink_df['consumption_category'].value_counts()
+    category_counts = drink_df["consumption_category"].value_counts()
     plt.figure(figsize=(8, 6))
-    sns.barplot(x=category_counts.index, y=category_counts.values, palette="viridis")
+    sns.barplot(x=category_counts.index, y=category_counts.values, 
+                palette="viridis",hue=None, legend=False)
     plt.title("Number of Countries by Alcohol Consumption Category")
     plt.xlabel("Consumption Category")
     plt.ylabel("Number of Countries")
-    plt.savefig("consumption_category.png", bbox_inches='tight')
+    plt.savefig("consumption_category.png", bbox_inches="tight")
     plt.close()  # Close the plot
+
 
 def save_to_markdown(drink_csv):
     """Save summary report to markdown."""
     # Load and preprocess data
     df = load_and_preprocess(drink_csv)
-    
+
     # Generate descriptive statistics
     basic_stats = calculate_basic_stats(df)
     markdown_basic_stats = basic_stats.to_markdown()
@@ -89,13 +91,14 @@ def save_to_markdown(drink_csv):
     plot_servings_distributions(df)
 
     # Category plot for markdown
-    category_counts = df['consumption_category'].value_counts()
+    category_counts = df["consumption_category"].value_counts()
     plt.figure(figsize=(8, 6))
-    sns.barplot(x=category_counts.index, y=category_counts.values, palette="viridis")
+    sns.barplot(x=category_counts.index, y=category_counts.values, 
+                palette="viridis", hue=None, legend=False)
     plt.title("Number of Countries by Alcohol Consumption Category")
     plt.xlabel("Consumption Category")
     plt.ylabel("Number of Countries")
-    plt.savefig("consumption_category.png", bbox_inches='tight')
+    plt.savefig("consumption_category.png", bbox_inches="tight")
     plt.close()
 
     # Write the analysis summary to markdown
@@ -132,10 +135,11 @@ def save_to_markdown(drink_csv):
 
     print("Summary report saved as 'alcohol_consumption_summary.md'")
 
+
 if __name__ == "__main__":
     main()
     drink_csv = (
-    "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/"
-    "master/alcohol-consumption/drinks.csv"
+        "https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/"
+        "master/alcohol-consumption/drinks.csv"
     )
     save_to_markdown(drink_csv)

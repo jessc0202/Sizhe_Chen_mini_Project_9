@@ -41,7 +41,8 @@ def plot_average_servings(df):
 def plot_top_countries(df):
     top_5 = df.nlargest(5, 'total_alcohol')
     plt.figure(figsize=(5, 6))
-    sns.barplot(data=top_5, x='total_alcohol', y='country', palette='viridis')
+    sns.barplot(data=top_5, x='total_alcohol', y='country', 
+                palette='viridis', hue= None, legend= False)
     plt.title("Top 5 Countries by Total Alcohol Consumption")
     plt.xlabel("Total Alcohol Consumption (Litres)")
     plt.ylabel("Country")
