@@ -24,7 +24,8 @@ The data used in this project is from the [FiveThirtyEight's alcohol consumption
 [Dataset Link](https://raw.githubusercontent.com/fivethirtyeight/data/refs/heads/master/alcohol-consumption/drinks.csv)
 
 ### Video Demonstrating
-[Youtube Link] (https://studio.youtube.com/video/nSjfec2Xx8I/edit)
+[Youtube Link](https://www.youtube.com/watch?v=nSjfec2Xx8I)
+
 ## Project Setup
 
 ### Prerequisites
